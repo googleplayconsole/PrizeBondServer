@@ -16,7 +16,6 @@ app.get("/", async (req, res) => {
   res.render("home");
 });
 
-
 const Link = require("./api/Links");
 app.use("/api/link", Link);
 
