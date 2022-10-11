@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const asyncHandler = require("express-async-handler");
+const databaseVersion = require("../models/databaseVersion");
 const rs100Schema = require("../models/rs100Schema");
 const rs1500Schema = require("../models/rs1500Schema");
 const rs200Schema = require("../models/rs200Schema");
@@ -12,22 +13,19 @@ const rs40000Schema = require("../models/rs40000Schema");
 const rs7500Schema = require("../models/rs7500Schema");
 const rs750Schema = require("../models/rs750Schema");
 
-// router.get(
-//   "/create",
-//   asyncHandler(async (req, res) => {
-//      try {
-//        await rs100.create({
-//         bondNumber: "100",
-//           link: "this is link"
-//         }
-//       );
-//       const rs100s = await rs100.find();
-//       res.json({ status: 1, message: "Done", response: rs100s});
-//     } catch (e) {
-//       res.json({ status: 0, message: e, serviceResponse: [] });
-//     }
-//   })
-// );
+
+
+router.get(
+  "/version/get",
+  asyncHandler(async (req, res) => {
+     try {
+      const data = await databaseVersion.findOne();
+      res.json({ status: 1, message: "Done", response: data});
+    } catch (e) {
+      res.json({ status: 0, message: e});
+    }
+  })
+);
 
 router.get(
   "/100/get",
@@ -36,7 +34,7 @@ router.get(
       const data = await rs100Schema.find();
       res.json({ status: 1, message: "Done", response: data});
     } catch (e) {
-      res.json({ status: 0, message: e, serviceResponse:[]});
+      res.json({ status: 0, message: e, response:[]});
     }
   })
 );
@@ -49,7 +47,7 @@ router.get(
       const data = await rs200Schema.find();
       res.json({ status: 1, message: "Done", response: data});
     } catch (e) {
-      res.json({ status: 0, message: e, serviceResponse: [] });
+      res.json({ status: 0, message: e, response: [] });
     }
   })
 );
@@ -63,7 +61,7 @@ router.get(
       const data = await rs750Schema.find();
       res.json({ status: 1, message: "Done", response: data});
     } catch (e) {
-      res.json({ status: 0, message: e, serviceResponse: [] });
+      res.json({ status: 0, message: e, response: [] });
     }
   })
 );
@@ -77,7 +75,7 @@ router.get(
       const data = await rs1500Schema.find();
       res.json({ status: 1, message: "Done", response: data});
     } catch (e) {
-      res.json({ status: 0, message: e, serviceResponse: [] });
+      res.json({ status: 0, message: e, response: [] });
     }
   })
 );
@@ -91,7 +89,7 @@ router.get(
       const data = await rs7500Schema.find();
       res.json({ status: 1, message: "Done", response: data});
     } catch (e) {
-      res.json({ status: 0, message: e, serviceResponse: [] });
+      res.json({ status: 0, message: e, response: [] });
     }
   })
 );
@@ -105,7 +103,7 @@ router.get(
       const data = await rs25000Schema.find();
       res.json({ status: 1, message: "Done", response: data});
     } catch (e) {
-      res.json({ status: 0, message: e, serviceResponse: [] });
+      res.json({ status: 0, message: e, response: [] });
     }
   })
 );
@@ -119,7 +117,7 @@ router.get(
       const data = await rs25000pSchema.find();
       res.json({ status: 1, message: "Done", response: data});
     } catch (e) {
-      res.json({ status: 0, message: e, serviceResponse: [] });
+      res.json({ status: 0, message: e, response: [] });
     }
   })
 );
@@ -133,7 +131,7 @@ router.get(
       const data = await rs40000Schema.find();
       res.json({ status: 1, message: "Done", response: data});
     } catch (e) {
-      res.json({ status: 0, message: e, serviceResponse: [] });
+      res.json({ status: 0, message: e, response: [] });
     }
   })
 );
@@ -147,7 +145,7 @@ router.get(
       const data = await rs40000pSchema.find();
       res.json({ status: 1, message: "Done", response: data});
     } catch (e) {
-      res.json({ status: 0, message: e, serviceResponse: [] });
+      res.json({ status: 0, message: e, response: [] });
     }
   })
 );
