@@ -20,7 +20,7 @@ router.get(
   asyncHandler(async (req, res) => {
      try {
       const data = await databaseVersion.findOne();
-      res.json({ status: 1, message: "Done", response: data});
+      res.json({ status: 1, message: "Done", response: data.versionNumber});
     } catch (e) {
       res.json({ status: 0, message: e});
     }
