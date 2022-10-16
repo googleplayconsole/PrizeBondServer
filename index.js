@@ -1,4 +1,3 @@
-const PORT = 3000;
 
 const express = require("express");
 
@@ -19,8 +18,9 @@ app.get("/", async (req, res) => {
 const Link = require("./api/Links");
 app.use("/api/link", Link);
 
+app.listen(process.env.PORT);
   
-app.listen(process.env.PORT || PORT,()=>{
-    console.log("Running at http://localhost:"+PORT+"/")
-});
+// app.listen(process.env.PORT || PORT,()=>{
+//     console.log("Running at http://localhost:"+PORT+"/")
+// });
   
