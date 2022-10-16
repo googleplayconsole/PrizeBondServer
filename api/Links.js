@@ -3,7 +3,6 @@ const router = express.Router();
 
 const asyncHandler = require("express-async-handler");
 const databaseVersion = require("../models/databaseVersion");
-const full = require("../models/full");
 const rs100Schema = require("../models/rs100Schema");
 const rs1500Schema = require("../models/rs1500Schema");
 const rs200Schema = require("../models/rs200Schema");
@@ -16,29 +15,29 @@ const rs750Schema = require("../models/rs750Schema");
 
 
 
-router.get(
-  "/full",
-  asyncHandler(async (req, res) => {
-     try {
-      const data = await full.find();
-    //   const data = await full.create({
-    //     drawerNo: req.query.drawerNo,
-    //     date:req.query.date,
-    //     heldAt:req.query.heldAt,
-    //     drawerOf:req.query.drawerOf,
-    //     drawerNo1:req.query.drawerNo1,
-    //     drawerNo2:req.query.drawerNo2,
-    //     drawerNo3:req.query.drawerNo3,
-    //     drawerList1:req.query.drawerList1,
-    //     drawerList2:req.query.drawerList2,
-    //     drawerList3 : req.query.drawerList3,
-    //  });
-      res.json({ status: "1", message: "Done", response: data});
-    } catch (e) {
-      res.json({ status: "0", message: e});
-    }
-  })
-);
+// router.get(
+//   "/full",
+//   asyncHandler(async (req, res) => {
+//      try {
+//       const data = await full.find();
+//     //   const data = await full.create({
+//     //     drawerNo: req.query.drawerNo,
+//     //     date:req.query.date,
+//     //     heldAt:req.query.heldAt,
+//     //     drawerOf:req.query.drawerOf,
+//     //     drawerNo1:req.query.drawerNo1,
+//     //     drawerNo2:req.query.drawerNo2,
+//     //     drawerNo3:req.query.drawerNo3,
+//     //     drawerList1:req.query.drawerList1,
+//     //     drawerList2:req.query.drawerList2,
+//     //     drawerList3 : req.query.drawerList3,
+//     //  });
+//       res.json({ status: "1", message: "Done", response: data});
+//     } catch (e) {
+//       res.json({ status: "0", message: e});
+//     }
+//   })
+// );
 
 router.get(
   "/version/get",
