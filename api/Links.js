@@ -44,42 +44,42 @@ router.get(
   asyncHandler(async (req, res) => {
      try {
       const data = await databaseVersion.findOne();
-      res.json({ status: "1", message: "Done", response: data.versionNumber});
+      res.json({ status: "1", message: "Done", response: data});
     } catch (e) {
       res.json({ status: "0", message: e});
     }
   })
 );
 
-router.get(
-  "/all/get",
-  asyncHandler(async (req, res) => {
-     try {
-      const rs100 = await rs100Schema.find();
-      const rs200 = await rs200Schema.find();
-      const rs750 = await rs750Schema.find();
-      const rs1500 = await rs1500Schema.find();
-      const rs7500 = await rs7500Schema.find();
-      const rs25000 = await rs25000Schema.find();
-      const rs25000p = await rs25000pSchema.find();
-      const rs40000 = await rs40000Schema.find();
-      const rs40000p = await rs40000pSchema.find();
-      res.json({ status: "1", message: "Done", response: {
-        "rs100":rs100,
-        "rs200":rs200,
-        "rs750":rs750,
-        "rs1500":rs1500,
-        "rs7500":rs7500,
-        "rs25000":rs25000,
-        "rs25000p":rs25000p,
-        "rs40000":rs40000,
-        "rs40000p":rs40000p,
-      }});
-    } catch (e) {
-      res.json({ status: "0", message: e, response:[]});
-    }
-  })
-);
+// router.get(
+//   "/all/get",
+//   asyncHandler(async (req, res) => {
+//      try {
+//       const rs100 = await rs100Schema.find();
+//       const rs200 = await rs200Schema.find();
+//       const rs750 = await rs750Schema.find();
+//       const rs1500 = await rs1500Schema.find();
+//       const rs7500 = await rs7500Schema.find();
+//       const rs25000 = await rs25000Schema.find();
+//       const rs25000p = await rs25000pSchema.find();
+//       const rs40000 = await rs40000Schema.find();
+//       const rs40000p = await rs40000pSchema.find();
+//       res.json({ status: "1", message: "Done", response: {
+//         "rs100":rs100,
+//         "rs200":rs200,
+//         "rs750":rs750,
+//         "rs1500":rs1500,
+//         "rs7500":rs7500,
+//         "rs25000":rs25000,
+//         "rs25000p":rs25000p,
+//         "rs40000":rs40000,
+//         "rs40000p":rs40000p,
+//       }});
+//     } catch (e) {
+//       res.json({ status: "0", message: e, response:[]});
+//     }
+//   })
+// );
 
 router.get(
   "/100/get",
